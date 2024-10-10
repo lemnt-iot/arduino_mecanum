@@ -3,7 +3,7 @@
 #include "ps2x_control.h"
 #include "motor_control.h"
 
-void (*resetFunc)(void) = 0;
+void (*resetFunc)() = nullptr;
 
 void setup() {
     Serial.begin(9600);
