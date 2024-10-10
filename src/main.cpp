@@ -13,6 +13,7 @@ void setup() {
 
 void loop() {
     if (error == 1) {
+        Serial.println("Error occurred, resetting system...");
         resetFunc();
     }
     PS2xControl::controller();

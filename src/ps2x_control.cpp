@@ -94,50 +94,29 @@ void PS2xControl::move_car() {
 void PS2xControl::left_rocker() {
     const int Y1 = ps2x.Analog(PSS_LY); /* 获取左摇杆Y轴 */
     const int X1 = ps2x.Analog(PSS_LX); /* 获取左摇杆X轴 */
-    /* 根据摇杆的倾斜程度动态调整车速 */
-    const int dynamicSpeed = static_cast<int>(
-        map(abs(Y1 - 128), 0, 128, minSpeed, maxSpeed));
-    if (Y1 < 5 && X1 > 80 && X1 < 180) {
-        motor_control.move(CarCommand::FORWARD);
-        MotorControl::motor_speed(dynamicSpeed);
-    } else if (Y1 > 230 && X1 > 80 && X1 < 180) {
-        motor_control.move(CarCommand::BACKWARD);
-        MotorControl::motor_speed(dynamicSpeed);
-    } else if (X1 < 5) {
-        motor_control.move(CarCommand::TRANSLATION_LEFT);
-        MotorControl::motor_speed(dynamicSpeed);
-    } else if (X1 > 230) {
-        motor_control.move(CarCommand::TRANSLATION_RIGHT);
-        MotorControl::motor_speed(dynamicSpeed);
-    } else {
-        motor_control.move(CarCommand::STOP); /* 摇杆未操作时停止 */
-    }
+    process_rocker_input(X1, Y1);
 }
 
 /* 右摇杆控制 (未实现复杂功能，可以根据需求扩展) */
 void PS2xControl::right_rocker() {
     const int Y2 = ps2x.Analog(PSS_RY);
     const int X2 = ps2x.Analog(PSS_RX);
+    process_rocker_input(X2, Y2);
+}
 
-    // 设置摇杆的中立范围，以避免传感器的噪声影响
-    constexpr int centerMin = 110;
-    constexpr int centerMax = 140;
-
-    // 判断摇杆是否在中立位置
-    if (Y2 > centerMin && Y2 < centerMax && X2 > centerMin && X2 < centerMax) {
-        Serial.println("RightRocker in neutral position - Stop");
-        // 添加停止设备的逻辑
-    } else if (Y2 < centerMin) {
-        Serial.println("RightRocker moving up");
-        // 添加上移逻辑，例如：控制设备向前移动
-    } else if (Y2 > centerMax) {
-        Serial.println("RightRocker moving down");
-        // 添加下移逻辑，例如：控制设备向后移动
-    } else if (X2 < centerMin) {
-        Serial.println("RightRocker moving left");
-        // 添加左移逻辑，例如：控制设备左转
-    } else if (X2 > centerMax) {
-        Serial.println("RightRocker moving right");
-        // 添加右移逻辑，例如：控制设备右转
+/* 处理摇杆输入并控制车的移动 */
+void PS2xControl::process_rocker_input(const int X, const int Y) {
+    const int dynamicSpeed = static_cast<int>(map(abs(Y - 128), 0, 128, minSpeed, maxSpeed));
+    if (Y < 5 && X > 80 && X < 180) {
+        motor_control.move(CarCommand::FORWARD);
+    } else if (Y > 230 && X > 80 && X < 180) {
+        motor_control.move(CarCommand::BACKWARD);
+    } else if (X < 5) {
+        motor_control.move(CarCommand::TRANSLATION_LEFT);
+    } else if (X > 230) {
+        motor_control.move(CarCommand::TRANSLATION_RIGHT);
+    } else {
+        motor_control.move(CarCommand::STOP);
     }
+    MotorControl::motor_speed(dynamicSpeed);
 }

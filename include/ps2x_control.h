@@ -24,6 +24,9 @@ public:
     static void left_rocker();
 
     static void right_rocker();
+
+private:
+    static void process_rocker_input(int X, int Y);
 };
 
 #endif //PS2X_CONTROL_H
