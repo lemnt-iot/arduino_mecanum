@@ -77,6 +77,8 @@ arduino_mecanum/
 - lib/: 库目录，用于存放项目所需的第三方库。
   - PS2X_lib/: PS2X 库文件夹，包含库的实现和头文件。
 
+## 贡献
+
 欢迎提交问题和功能请求。请提交合并请求时遵循以下步骤：
 
 1. Fork 该仓库
@@ -84,7 +86,3 @@ arduino_mecanum/
 3. 提交您的更改 (`git commit -m 'Add some feature—xxx'`)
 4. 推送到分支 (`git push origin feature—xxx`)
 5. 创建合并请求
-
-## 许可
-
-此项目使用 MIT 许可证，详情请查看 [LICENSE](LICENSE) 文件。
