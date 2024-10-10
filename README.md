@@ -61,9 +61,10 @@ arduino_mecanum/
 ├── src/
 │   ├── main.cpp             # 主程序文件
 │   ├── ps2x_control.cpp     # PS2 控制器类实现
-│   └── ps2x_control.h       # PS2 控制器类头文件
-│   ├── motor_control.cpp     # 电机控制类实现
-│   └── motor_control.h       # 电机控制类头文件
+│   └── motor_control.cpp    # 电机控制类实现
+├── include/
+│   ├── ps2x_control.h       # PS2 控制器类头文件
+│   └── motor_control.h      # 电机控制类头文件
 └── lib/
     └── PS2X_lib/        # PS2X 库文件
 ```
