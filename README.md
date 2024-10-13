@@ -46,8 +46,7 @@
 ## 使用方法
 
 1. **下载项目**：将代码克隆或下载到本地。
-2. **打开 Arduino IDE**：在 IDE 中打开 `main.ino` 文件。
-3. **选择正确的开发板和端口**：在 Arduino IDE 中选择您的开发板和相应的端口。
+2. **打开 CLion IDE**：在 IDE 中打开 `main.cpp` 文件。
 4. **上传代码**：点击“上传”按钮，将代码上传到 Arduino。
 5. **连接 PS2 控制器**：确保 PS2 控制器连接正确，电源打开。
 6. **运行程序**：打开串口监视器，您将看到控制器连接状态和小车运动状态的反馈。
@@ -55,7 +54,7 @@
 ## 代码结构
 
 ```
-arduino_mecanum/
+arduino_tank/
 ├── .gitignore                # Git 忽略文件
 ├── platformio.ini           # PlatformIO 项目配置文件
 ├── src/
