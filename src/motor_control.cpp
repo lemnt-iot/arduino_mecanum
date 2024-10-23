@@ -4,8 +4,11 @@
 
 /* 电机引脚初始化 */
 void MotorControl::init() {
-    pinMode(MOTOR_EN_A_PIN, OUTPUT);
-    pinMode(MOTOR_EN_B_PIN, OUTPUT);
+    pinMode(MOTOR_EN_LA_PIN, OUTPUT);
+    pinMode(MOTOR_EN_LB_PIN, OUTPUT);
+
+    pinMode(MOTOR_EN_RA_PIN, OUTPUT);
+    pinMode(MOTOR_EN_RB_PIN, OUTPUT);
 
     pinMode(MOTOR_IN1_LA_PIN, OUTPUT);
     pinMode(MOTOR_IN2_LA_PIN, OUTPUT);
@@ -40,21 +43,21 @@ void MotorControl::motor_pins(const int in1_LA, const int in2_LA, const int in1_
 void MotorControl::move(const CarCommand cmd) const {
     switch (cmd) {
         case CarCommand::FORWARD:
-            motor_pins(HIGH, LOW, HIGH, LOW,HIGH, LOW,HIGH, LOW);
+            motor_pins(HIGH, LOW, HIGH, LOW, HIGH, LOW, HIGH, LOW);
             Serial.println("FORWARD");
             break;
         case CarCommand::BACKWARD:
-            motor_pins(LOW, HIGH, LOW, HIGH,LOW, HIGH, LOW, HIGH);
+            motor_pins(LOW, HIGH, LOW, HIGH, LOW, HIGH, LOW, HIGH);
             Serial.println("BACKWARD");
             break;
         case CarCommand::ROTATE_CLOCKWISE:
             /*顺时针原地旋转*/
-            motor_pins(HIGH, LOW, HIGH, LOW,LOW, HIGH, LOW, HIGH);
+            motor_pins(HIGH, LOW, HIGH, LOW, LOW, HIGH, LOW, HIGH);
             Serial.println("ROTATE_CLOCKWISE");
             break;
         case CarCommand::ROTATE_COUNTERCLOCKWISE:
             /*逆时针原地旋转*/
-            motor_pins(LOW, HIGH, LOW, HIGH,HIGH, LOW, HIGH, LOW);
+            motor_pins(LOW, HIGH, LOW, HIGH, HIGH, LOW, HIGH, LOW);
             Serial.println("ROTATE_COUNTERCLOCKWISE");
             break;
         case CarCommand::TRANSLATION_LEFT:
@@ -75,8 +78,10 @@ void MotorControl::move(const CarCommand cmd) const {
 }
 
 void MotorControl::motor_speed(const int speed) {
-    analogWrite(MOTOR_EN_A_PIN, speed);
-    analogWrite(MOTOR_EN_B_PIN, speed);
+    analogWrite(MOTOR_EN_LA_PIN, speed);
+    analogWrite(MOTOR_EN_LB_PIN, speed);
+    analogWrite(MOTOR_EN_RA_PIN, speed);
+    analogWrite(MOTOR_EN_RB_PIN, speed);
 }
 
 /* 调整速度 */

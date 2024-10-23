@@ -1,20 +1,23 @@
 #ifndef MOTOR_CONTROL_H
 #define MOTOR_CONTROL_H
 
-#define MOTOR_EN_A_PIN 10
-#define MOTOR_EN_B_PIN 11
+#define MOTOR_EN_LA_PIN 3
+#define MOTOR_EN_RA_PIN 6
 
-#define MOTOR_IN1_LA_PIN 2
-#define MOTOR_IN2_LA_PIN 3
+#define MOTOR_EN_LB_PIN 11
+#define MOTOR_EN_RB_PIN 10
 
-#define MOTOR_IN1_RA_PIN 4
-#define MOTOR_IN2_RA_PIN 5
+#define MOTOR_IN1_LA_PIN 4
+#define MOTOR_IN2_LA_PIN 2
 
-#define MOTOR_IN1_LB_PIN 6
-#define MOTOR_IN2_LB_PIN 7
+#define MOTOR_IN1_RA_PIN 5
+#define MOTOR_IN2_RA_PIN 7
 
-#define MOTOR_IN1_RB_PIN 8
-#define MOTOR_IN2_RB_PIN 9
+#define MOTOR_IN1_LB_PIN 9
+#define MOTOR_IN2_LB_PIN 8
+
+#define MOTOR_IN1_RB_PIN 13
+#define MOTOR_IN2_RB_PIN 12
 
 /* 定义五种运动状态 */
 enum class CarCommand {
