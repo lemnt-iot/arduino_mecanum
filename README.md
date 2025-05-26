@@ -86,3 +86,7 @@ arduino_tank/
 3. 提交您的更改 (`git commit -m 'Add some feature—xxx'`)
 4. 推送到分支 (`git push origin feature—xxx`)
 5. 创建合并请求
+
+## 开源协议
+
+本项目基于 [MIT License](./LICENSE) 开源协议发布，您可以自由地使用、复制、修改、发布和用于商业用途，但请保留原作者的版权信息。
